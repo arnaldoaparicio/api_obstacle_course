@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @smoker %>
+
+<div>
+  <%= link_to "Edit this smoker", edit_smoker_path(@smoker) %> |
+  <%= link_to "Back to smokers", smokers_path %>
+
+  <%= button_to "Destroy this smoker", @smoker, method: :delete %>
+</div>
