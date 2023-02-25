@@ -16,7 +16,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_171604) do
 
   create_table "smokers", force: :cascade do |t|
     t.string "name"
-    t.integer "cranky_level", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
