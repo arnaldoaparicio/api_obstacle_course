@@ -12,28 +12,27 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe CreateSmoker, type: :request do
+RSpec.describe Mutations::CreateSmoker, type: :request do
   
-  it 'creates a smoker' do 
-    post 'graphql', params: { query: query(name: 'Gail') }
+  it 'creates a smoker' do
+    stash = "Gail"
+    post '/graphql', params: { query: query(name: stash) }
     json = JSON.parse(response.body, symbolize_names: true)
-
+    binding.pry
   end
 
 
 
-  def query(name)
-    <<~GQL
-      mutation {
-        createSmoker(
-          name: name
-        )
-        {
+  def query(name:)
+    <<~GRAPHQL
+    mutation {
+      createSmoker(input: { name: #{name} }) {
+        smoker {
           id
           name
-          cranky_level
         }
       }
-      GQL
+    }
+      GRAPHQL
   end
 end
