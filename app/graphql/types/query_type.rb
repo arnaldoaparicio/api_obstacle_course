@@ -5,18 +5,16 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :smokers, [Types::SmokerType], null: false
-    
-        field :smoker, Types::SmokerType, null: false do
-          argument :id, ID, required: true
-        end
-    
-      def smokers
-        Smoker.all
-      end
+    field :smoker, Types::SmokerType, null: false do
+      argument :id, ID, required: true
+    end
 
+    def smokers
+      Smoker.all
+    end
 
-      def smoker(id:)
-        Smoker.find(id)
-      end
+    def smoker(id:)
+      Smoker.find(id)
+    end
   end
 end
